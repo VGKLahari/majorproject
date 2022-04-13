@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import sys
 sys.path.append('../')
 from logparser import Drain, evaluator
@@ -11,6 +9,15 @@ input_dir = '../logs/' # The input directory of log file
 output_dir = 'Drain_result/' # The output directory of parsing results
 
 benchmark_settings = {
+    
+
+    'Hadoop': {
+        'log_file': 'Hadoop/Hadoop_2k.log',
+        'log_format': '<Date> <Time> <Level> \[<Process>\] <Component>: <Content>', 
+        'regex': [r'(\d+\.){3}\d+'],
+        'st': 0.5,
+        'depth': 4       
+        },
     'HDFS': {
         'log_file': 'HDFS/HDFS_2k.log',
         'log_format': '<Date> <Time> <Pid> <Level> <Component>: <Content>',
@@ -138,10 +145,10 @@ benchmark_settings = {
         'st': 0.7,
         'depth': 6   
         },
+
 }
 
 bechmark_result = []
-print(benchmark_settings,"gfrdgdfg")
 for dataset, setting in benchmark_settings.items():
     print(setting)
     print('\n=== Evaluation on %s ==='%dataset)
